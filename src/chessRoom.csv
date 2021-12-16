@@ -1,0 +1,15 @@
+0,1,8,"You are in a bank, the only exit is a vault door which has a timer above it showing 5 minutes, and counting down. You must cross a checkered floor within the time to clear the room.", Do you look for clues?
+1,2,5,There are two bank desks on the left and right sides., Do you look on the left or the right side?
+2,3,4,"You see a room full of deposit boxes, and the desk running along the side", Where do you look?
+3,8,8,"After searching for a while, you spot an emergency exit map showing you how to cross the floor".,-
+4,2,2,"After searching for a while, you find nothing.",-
+5,6,7,You see a room full of filing cabinets and the desk running along the side, Where do you look?
+6,8,8,"After searching for a while, you come across a card with 4 black and white squares on it",-
+7,5,5,"After searching for a long time, you find nothing",-
+8,9,0,-,"Do you attempt to cross the floor, even though it may kill you?"
+9,10,13,-,What square did you step on?
+10,13,11,-,What square did you step on?
+11,12,9,-,Have you crossed the floor?
+12,14,14,"You run towards the exit, narrowly squeezing past the vault door, and it closes behind you.",-
+13,-,-,"Game Over",-
+14,-,-,"Move to the next room",-
