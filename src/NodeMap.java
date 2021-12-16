@@ -35,7 +35,7 @@ public class NodeMap {
 
     public NodeMap(String pathname)  {
         try {
-            currentMap = new NodeCollection("src/chessRoom.csv");
+            currentMap = new NodeCollection(pathname);
             head = currentMap.get(0);
         } catch (FileNotFoundException e) {
             //message
@@ -82,28 +82,28 @@ public class NodeMap {
 
     public String yesPath(){
         Node node = head;
-        String string = "YES PATH\n";
+        StringBuilder string = new StringBuilder("YES PATH\n");
         while(node != null) {
-            string += node.toString() + "\n";
+            string.append(node).append("\n");
             node = node.getLeftNode();
             if (node.getID() == 0) { node = null;}
         }
-        return string;
+        return string.toString();
     }
 
     public String noPath(){
         Node node = head;
-        String string = "NO PATH\n";
+        StringBuilder string = new StringBuilder("NO PATH\n");
         while(node != null) {
-            string += node.toString() + "\n";
+            string.append(node).append("\n");
             node = node.getRightNode();
             if (node.getID() == 0) { node = null;}
         }
-        return string;
+        return string.toString();
     }
 
 
     public int lastNode() {
-        return currentMap.Size();
+        return currentMap.Size()-1;
     }
 }
