@@ -8,6 +8,8 @@ public class Console {
 
         io = new Scanner(System.in);
 
+        long startTime = System.currentTimeMillis();
+
         while (map.currentNode() != null) {
 
             print(map.currentNode().getDescription());
@@ -18,10 +20,16 @@ public class Console {
                     map.noDecision();
                 } else {
                     map.decision(
-                            fromConsoleGetInt("Yes or No? (press 1 for Yes or 2 No)") // may remove to make more sense
+                            // when implemented in GUI this prompt won't be necessary
+                            fromConsoleGetInt("(press 1 for left or 2 for right)")
                     ) ;
                 }
             } else {
+                // This is where it needs to evaluate whether to go for hard, easy or medium.
+                long endTime = System.currentTimeMillis() - startTime;
+                long elapsedMinutes = endTime / 60000;
+                // Maps will be sorted in to hard/medium/easy folders.
+                // Then to pick the map choose one at random from the hard/medium/easy folder
                 map.NextMap("src/dataCorrected.csv");
             }
         }
@@ -38,8 +46,7 @@ public class Console {
     }
     public  int fromConsoleGetInt(String prompt){
         print(prompt);
-        int retVal = io.nextInt();
-        return retVal;
+        return io.nextInt();
     }
 
 

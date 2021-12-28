@@ -1,5 +1,3 @@
-import org.jetbrains.annotations.NotNull;
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +8,7 @@ import static java.lang.Integer.valueOf;
 public class NodeCollection {
 
     private ArrayList<Node> nodes;
+    private long[] parameters;
 /****************************************************/
 /*************    SUPPORT MAP BUILDER  **************/
 /****************************************************/
@@ -25,6 +24,9 @@ public class NodeCollection {
     public ArrayList<Node> arrayList(){
         return nodes;
     }
+    public long[] getParameters(){
+        return parameters;
+    }
     public Node get(int index){ return nodes.get(index); }
 /****************************************************/
 /**************         BUILD      ******************/
@@ -35,6 +37,11 @@ public class NodeCollection {
         Scanner fileRef = new Scanner(prc);
         nodes = new ArrayList<Node>();
         Node node;
+        String[] firstLine = fileRef.nextLine().split(","); // uses first line for parameters of map, does not get put into node map
+        for(int i = 0; i < 3; i++) {
+            parameters[i] = Long.parseLong(firstLine[i]);
+        }
+
         while (fileRef.hasNext()) {
             String line = fileRef.nextLine();
             node = mapFields(line);
@@ -88,11 +95,11 @@ public class NodeCollection {
     }
 
     public String toString(){
-        String str = "";
+        StringBuilder str = new StringBuilder();
         for(Node n : nodes){
-            str += n.toString() + "\n";
+            str.append(n.toString()).append("\n");
         }
-        return str;
+        return str.toString();
     }
 
     public int Size(){

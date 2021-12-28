@@ -7,6 +7,10 @@ public class NodeMap {
     private Node head;
     private Node currentNode;
     private NodeCollection currentMap;
+    private long easyTime;
+    private long mediumTime;
+    private long hardTime;
+    private long timer;
 
 /****************************************************/
 /**************      NAVIGATE       *****************/
@@ -57,7 +61,6 @@ public class NodeMap {
         currentNode = head;
     }
 
-
     private void buildMap(NodeCollection nodeCollection)   {
         if (nodeCollection == null) {return;}
         for(Node source : nodeCollection.arrayList()){
@@ -70,6 +73,7 @@ public class NodeMap {
             Node noNode = nodeCollection.locateNodeBy(noID);
             source.setLeftNode(yesNode);
             source.setRightNode(noNode);
+            populateParameters();
         }
     }
 
@@ -102,8 +106,18 @@ public class NodeMap {
         return string.toString();
     }
 
-
     public int lastNode() {
         return currentMap.Size()-1;
     }
+    public void populateParameters(){
+        long[] parameters = currentMap.getParameters();
+        easyTime = parameters[0];
+        mediumTime = parameters[1];
+        hardTime = parameters[2];
+        timer = parameters[3];
+    }
+    public long getEasyTime() {return easyTime;}
+    public long getMediumTime() {return mediumTime;}
+    public long getHardTime() {return hardTime;}
+    public long getTimer() {return timer;}
 }
