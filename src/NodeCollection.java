@@ -8,7 +8,7 @@ import static java.lang.Integer.valueOf;
 public class NodeCollection {
 
     private ArrayList<Node> nodes;
-    private long[] parameters;
+    private long[] parameters = new long[3];
 /****************************************************/
 /*************    SUPPORT MAP BUILDER  **************/
 /****************************************************/
@@ -38,7 +38,7 @@ public class NodeCollection {
         nodes = new ArrayList<Node>();
         Node node;
         String[] firstLine = fileRef.nextLine().split(","); // uses first line for parameters of map, does not get put into node map
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < 2; i++) {
             parameters[i] = Long.parseLong(firstLine[i]);
         }
 

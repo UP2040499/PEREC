@@ -10,7 +10,6 @@ public class NodeMap {
     private long easyTime;
     private long mediumTime;
     private long hardTime;
-    private long timer;
 
 /****************************************************/
 /**************      NAVIGATE       *****************/
@@ -114,10 +113,8 @@ public class NodeMap {
         easyTime = parameters[0];
         mediumTime = parameters[1];
         hardTime = parameters[2];
-        timer = parameters[3];
     }
     public long getEasyTime() {return easyTime;}
     public long getMediumTime() {return mediumTime;}
     public long getHardTime() {return hardTime;}
-    public long getTimer() {return timer;}
 }
