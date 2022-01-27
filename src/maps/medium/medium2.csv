@@ -1,0 +1,34 @@
+50,35,25
+0,1,1,"Find the Cure",-
+1,2,2,"You are one of the last healthy scientists left. You need to find a cure for this new deadly virus. There are some reports of other scientists around the world coming close to a cure",-
+2,3,7,"You start at the WHO HQ, do you:","look for clues in your friend Dr. Nick's office, the last scientist to coordinate efforts for a cure or go to the Chinese Institute of Health, as you have a hunch that they were close to a cure, but keeping it a secret"
+3,4,12,"After looking around, you find a cryptic note: 'what is the coldest country in the world'. Is it:","Chile or Iceland"
+4,5,5,"Remembering Dr. Nick knew scientists working in the remote mountains of Chile, you fly to the research outpoost there.",-
+5,16,6,"You find a computer, still powered on, perhaps to finish working on something. You also see some vials on the counter - could it be a cure? Do you take the vials or look at the computer?","Vials or Computer"
+6,11,11,"Wow! You find what looks like the results of genome sequencing. This could be the key to the cure. You take the data with you to India, where you should be able to make a cure.",-
+7,8,9,"You arrive at the Chinese Institute of Health. It is huge. Do you:", "go to the genome sequencing lab or go to the samples lab, which may have samples of the virus"
+8,17,17,"Luckily, the virus has already been sequenced, this could be the key to the cure! You take the data with you to India, where you should be able to make a cure.",-
+9,10,10,"You find vials of what could be the virus. You go to the sequencing lab to try to sequence it.",-
+10,11,11,"After a while, the computer give you a complete genome sequence of the virus. This can be used to make a cure. You take the data with you to India, where you should be able to make a cure.",-
+11,17,17,"Once arriving, you start to feel symptoms of the virus - the clock is ticking now.",-
+12,13,14,"Clueless as to where to start do you:","go find the nearest research lab or attempt to look for more clues"
+13,14,14,"After a day in Iceland, you find nothing. You also start to develop symptomsof the virus - the clock's ticking now.",-
+14,15,16,"You arrive at the nearest research facility, there is not much but there are samples of the virus. Do you:","get annoyed and throw them on the floor or take them to london for genome sequencing"
+15,-,-,"By destroying the samples, you have nothing left here to do and will likely die of the virus before you can do anything else. Game over!",-
+16,17,17,"You arrive in London to sequence the samples",-
+17,18,18,"After sequencing the samples, the results show a complete sequence of the virus, this can be used to make a cure! You take the data with you to India, where you should be able to make a cure.",-
+18,19,19,"You arrive at what once was the Serum Institute. You immediately get to work on the cure.",-
+19,20,20,"After a few days, your symptoms are getting worse and more severe.",-
+20,21,22,"However, hope is not lost and you have manufacured what could be a cure. Do you:","Inject it into yourself, knowing it could kill you and all the research you have done or Test it on rats, which will take time but should ensure some safety of the cure"
+21,-,-,"After a few days, you seem to be recovering, the cure may not be that safe, but you start producing it anyway!",-
+22,23,23,"tap 10 times",-
+23,24,24,"tap 9 times",-
+24,25,25,"tap 8 times",-
+25,26,26,"tap 7 times",-
+26,27,27,"tap 6 times",-
+27,28,28,"tap 5 times",-
+28,29,29,"tap 4 times",-
+29,30,30,"tap 3 times",-
+30,31,31,"tap 2 times",-
+31,32,32,"tap 1 times",-
+32,-,-,"You have made what appears to be a safe cure. You inject it into yourself, and start producing as much as possible for the whole world.",-

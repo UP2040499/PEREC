@@ -1,18 +1,30 @@
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Console {
 
-     Scanner io;
+    Scanner io;
+    NodeMap map;
+    ArrayList<String> easyFiles;
+    ArrayList<String> mediumFiles;
+    ArrayList<String> hardFiles;
 
-    public Console(NodeMap map){
+    public Console(NodeMap map, ArrayList<String> easyFiles, ArrayList<String> mediumFiles, ArrayList<String> hardFiles){
+
+        this.easyFiles = easyFiles;
+        this.mediumFiles = mediumFiles;
+        this.hardFiles = hardFiles;
 
         io = new Scanner(System.in);
+        this.map = map;
 
         long startTime =  System.currentTimeMillis();
-        boolean isGameOver = false;
+        boolean isDead = false;
 
-        while (!isGameOver) {
-            boolean isDead = map.currentNode() == null;
+        while (!isDead) {
+            isDead = map.currentNode() == null;
 
             print(map.currentNode().getDescription());
             print(map.currentNode().getQuestion());
@@ -29,28 +41,49 @@ public class Console {
             } else if(!isDead){
                 // This is where it needs to evaluate whether to go for hard, easy or medium.
                 long endTime =  (System.currentTimeMillis() - startTime);
-                long elapsedMinutes = endTime / 60000;
-                if(elapsedMinutes <= map.getHardTime()){
+                long elapsedSeconds = endTime / 1000;
+                if(elapsedSeconds <= map.getHardTime()){
                     //go to a random hard map
                     //what if run out of hard maps?
                     //perhaps use an array to store already used maps to guarantee no repetition
-                } else if(elapsedMinutes <= map.getMediumTime()){
+                    //or have arrays for each difficulty and pop each map off the array once they have been selected.
+                    isDead = loadNewMap("hard", hardFiles);
+                    startTime = System.currentTimeMillis();
+                } else if(elapsedSeconds <= map.getMediumTime()){
                     //go to a random medium map
+                    isDead = loadNewMap("medium", mediumFiles);
+                    startTime = System.currentTimeMillis();
                 }else{
                     //go to a random easy map
+                    isDead = loadNewMap("easy", easyFiles);
+                    startTime = System.currentTimeMillis();
                 }
-                // Maps will be sorted in to hard/medium/easy folders.
-                // Then to pick the map choose one at random from the hard/medium/easy folder
-                map.NextMap("src/dataCorrected.csv");
-                startTime = System.currentTimeMillis(); //new start time for next map
-            } else{
-                // This will also catch other issues but is meant to be accessed when isDead==true
-                isGameOver = gameOver("You died!");
             }
-            // Out of time check
-            if(System.currentTimeMillis() - startTime >= map.getEasyTime() && !isDead){
-                isGameOver = gameOver("You ran out of time!");
+            // Outside of mutual exclusion
+            if(System.currentTimeMillis() - startTime >= map.getEasyTime()*1000 && !isDead){
+                isDead = gameOver("You ran out of time!");
             }
+        }
+    }
+    public boolean loadNewMap(String difficulty, ArrayList<String> filenames){
+        File directory=new File("src/maps/"+difficulty);
+        int fileCount=directory.list().length;
+
+        Random rand = new Random();
+
+        if(fileCount > 1){
+            int randIndex = rand.nextInt(fileCount);
+            String filename = filenames.get(randIndex);
+            filenames.remove(randIndex);
+            this.map = new NodeMap("src/maps/"+difficulty+"/"+filename);
+            return false;
+        } else if(fileCount == 1){
+            String filename = filenames.get(0);
+            filenames.remove(0);
+            this.map = new NodeMap("src/maps/"+difficulty+"/"+filename);
+            return false;
+        } else{
+            return gameOver("You have completed the game!");
         }
     }
     public boolean gameOver(String prompt) {
